@@ -1,10 +1,7 @@
 import React from 'react';
-import MainPage from '@/pages/main-page'
+import MainPage from 'pages/MainPage';
 
-
-const App = () => {
-    return (
-        <MainPage/>
-    );
-};
+const App = () => (
+  <MainPage />
+);
 export default App;

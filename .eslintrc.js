@@ -5,7 +5,8 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -22,6 +23,9 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "react/display-name": 0
+        "react/display-name": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "import/no-unresolved": 0,
+        "func-names": 0
     }
 };
