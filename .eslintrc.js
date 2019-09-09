@@ -26,6 +26,7 @@ module.exports = {
         "react/display-name": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "import/no-unresolved": 0,
-        "func-names": 0
+        "func-names": 0,
+        "react/require-default-props": 0,
     }
 };

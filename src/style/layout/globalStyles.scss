@@ -1,3 +1,7 @@
 .l-row {
   @include flex-row;
 }
+
+.l-column {
+  @include flex-column;
+}
