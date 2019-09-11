@@ -1,0 +1,5 @@
+export default {
+  ERROR: 'ERROR',
+  SET_GAME_OPTIONS: 'SET_GAME_OPTIONS',
+  SET_GAME_VALUES: 'SET_GAME_VALUES',
+};
