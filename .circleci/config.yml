@@ -16,6 +16,6 @@ jobs:
           command: npm i
           shell: cmd.exe
       - run:
-          command: "start project"
+          name: "start project"
           command: npm run build
           shell: powershell.exe
