@@ -8,3 +8,11 @@
 .game__cell_active {
   background: blue;
 }
+
+.game__cell_user {
+  background: green;
+}
+
+.game__cell_computer {
+  background: red;
+}

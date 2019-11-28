@@ -13,7 +13,10 @@ const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 export const findRandomCell = (totalCellNumber, usedCells) => {
   let randomCell = getRandomInt(totalCellNumber);
-  console.log(usedCells);
+
+  if (randomCell === 0) {
+    return findRandomCell(totalCellNumber, usedCells);
+  }
   if (usedCells.includes(randomCell)) {
     randomCell += 1;
   }

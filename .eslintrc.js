@@ -1,4 +1,5 @@
 module.exports = {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true
@@ -28,5 +29,6 @@ module.exports = {
         "import/no-unresolved": 0,
         "func-names": 0,
         "react/require-default-props": 0,
+        "react/state-in-constructor": 0,
     }
 };

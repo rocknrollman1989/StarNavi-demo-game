@@ -12,9 +12,12 @@ const LeaderListSection = (props) => {
 
   const { isGetListError, leaderList } = props;
   const leader = leaderList && leaderList.length
-    ? leaderList.map((person) => (
-      <LeaderListContainer winner={person.winner} date={person.date} key={person.id} />
-    ))
+    ? leaderList.map((person, index) => {
+      if (leaderList.length - 5 < index) {
+        return <LeaderListContainer winner={person.winner} date={person.date} key={person.id} />;
+      }
+      return null;
+    })
     : null;
 
   return (

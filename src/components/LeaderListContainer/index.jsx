@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import style from './index.module.css';
 
 const LeaderListContainer = ({ winner, date }) => (
   <div className="l-row">
