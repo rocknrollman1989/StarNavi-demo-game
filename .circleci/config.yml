@@ -12,8 +12,10 @@ jobs:
       - checkout
       - run: ls -lah
       - run:
-          command: ping circleci.com
+          name: "Install project dependencies"
+          command: npm i
           shell: cmd.exe
       - run:
-          command: echo 'This is powershell'
+          command: "start project"
+          command: npm run build
           shell: powershell.exe
