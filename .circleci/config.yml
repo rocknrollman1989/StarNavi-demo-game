@@ -10,7 +10,6 @@ jobs:
       shell: powershell.exe
     steps:
       - checkout
-      - run: ls -lah
       - run:
           name: "Install project dependencies"
           command: npm i
