@@ -7,7 +7,7 @@ jobs:
   build:
     executor:
       name: win/vs2019
-      shell: bash.exe
+      shell: cmd.exe
     steps:
       - checkout
       - run:
@@ -17,4 +17,4 @@ jobs:
       - run:
           name: "start project"
           command: npm run build
-          shell: bash.exe
+          shell: cmd.exe
