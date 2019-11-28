@@ -14,17 +14,14 @@ class GameFieldSection extends React.Component {
   }
 
   componentDidMount() {
-    const { selectedGame } = this.props;
-
-    this.setState({
-      totalCellNumber: selectedGame.field ** 2,
-    }, () => {
-      this.startInterval(true);
-    });
+    this.gameStart();
   }
 
   shouldComponentUpdate(prevProps, prevState) {
-    const { usedCells, userCLickedCells, computerUsedCells } = this.state;
+    const {
+      usedCells, userCLickedCells, computerUsedCells,
+    } = this.state;
+    const { isGameProcess } = this.props;
     if (usedCells.length !== prevState.usedCells.length) {
       return false;
     }
@@ -34,6 +31,9 @@ class GameFieldSection extends React.Component {
     if (computerUsedCells !== prevState.computerUsedCells) {
       return false;
     }
+    if (prevProps.isGameProcess !== isGameProcess && prevProps.isGameProcess === true) {
+      this.gameStart();
+    }
     return true;
   }
 
@@ -41,22 +41,29 @@ class GameFieldSection extends React.Component {
     this.stopIntnerval();
   }
 
-  setNewActiveCell = () => {
-    // const { totalCellNumber, usedCells } = this.state;
-    this.checkGameProgress();
+  gameStart = () => {
+    const { selectedGame } = this.props;
+    this.setState({
+      totalCellNumber: selectedGame.field ** 2,
+      usedCells: [],
+      userCLickedCells: 0,
+      computerUsedCells: 0,
+    }, () => {
+      this.startInterval();
+    });
   }
 
   startInterval = () => {
     const { selectedGame } = this.props;
 
     this.changeActiveCell = setInterval(() => {
-      this.setNewActiveCell();
+      this.checkGameProgress();
     }, selectedGame.delay);
   }
 
   restartInterval = () => {
     this.stopIntnerval();
-    this.setNewActiveCell();
+    this.checkGameProgress();
     this.startInterval();
   }
 
@@ -69,7 +76,7 @@ class GameFieldSection extends React.Component {
   checkGameProgress = () => {
     const { usedCells, totalCellNumber } = this.state;
     const { setNewActiveCell } = this.props;
-    if (usedCells.length >= totalCellNumber) {
+    if (usedCells.length >= totalCellNumber || usedCells.length > 3) {
       this.stopIntnerval();
       this.setWinner();
       return;
@@ -79,7 +86,6 @@ class GameFieldSection extends React.Component {
 
   gamerClick = (cellId) => {
     const { usedCells, userCLickedCells } = this.state;
-    // this.checkGameProgress();
     this.setState({
       usedCells: [...usedCells, cellId],
       userCLickedCells: userCLickedCells + 1,
@@ -91,7 +97,6 @@ class GameFieldSection extends React.Component {
 
   computerClick = (cellId) => {
     const { usedCells, computerUsedCells } = this.state;
-    // this.checkGameProgress();
     this.setState({
       usedCells: [...usedCells, cellId],
       computerUsedCells: computerUsedCells + 1,
@@ -99,7 +104,6 @@ class GameFieldSection extends React.Component {
   }
 
   setWinner = () => {
-    console.log('!!!');
     const { setNewWinner, gamerName } = this.props;
     const { userCLickedCells, computerUsedCells } = this.state;
     const winner = userCLickedCells > computerUsedCells ? gamerName : 'computer';
@@ -161,6 +165,7 @@ GameFieldSection.propTypes = {
   setNewActiveCell: PropTypes.func,
   setNewWinner: PropTypes.func,
   gamerName: PropTypes.string,
+  isGameProcess: PropTypes.bool,
   selectedGame: PropTypes.shape({
     field: PropTypes.number, delay: PropTypes.number,
   }),

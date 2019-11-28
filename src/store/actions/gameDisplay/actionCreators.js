@@ -6,4 +6,5 @@ export default {
   SET_GAME_VALUE: (data) => ({ type: GAME_DISPLAY_CONSTANTS.SET_GAME_VALUES, data }),
   SET_ACTIVE_CELL: (data) => ({ type: GAME_DISPLAY_CONSTANTS.SET_ACTIVE_CELL, data }),
   SET_WINNER: (data) => ({ type: GAME_DISPLAY_CONSTANTS.SET_WINNER, data }),
+  CLEAR_WINNER_NAME: () => ({ type: GAME_DISPLAY_CONSTANTS.CLEAR_WINNER_NAME }),
 };

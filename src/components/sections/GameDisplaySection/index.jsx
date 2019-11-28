@@ -5,20 +5,24 @@ import { createSelectOptionsArray } from 'helpers';
 import CustomTextInput from 'components/formInputs/CustomTextInput';
 import CustomSelectInput from 'components/formInputs/CustomSelectInput';
 import GameFieldSection from 'components/sections/GameFieldSection';
-import { getGameOptions, setGameValue } from 'store/actions/gameDisplay';
+import { getGameOptions, setGameValue, clearWinner } from 'store/actions/gameDisplay';
 import style from './index.module.css';
 
 const GameDisplaySection = (props) => {
   const {
-    getOptions, gameSelectOptions, setGame, selectedGame, winner,
+    getOptions, gameSelectOptions, setGame, selectedGame, winner, deleteWinner,
   } = props;
   const [gameMode, setGameMode] = useState('');
   const [userName, setUserName] = useState('');
-  const [gameProcess, setGameProcess] = useState(false);
+  const [isGameProcess, setIsGameProcess] = useState(false);
 
   useEffect(() => {
     getOptions();
   }, []);
+
+  useEffect(() => {
+    setIsGameProcess(false);
+  }, [winner]);
 
   const setPlayerName = (value) => {
     setUserName(value);
@@ -29,7 +33,8 @@ const GameDisplaySection = (props) => {
   };
 
   const startGame = () => {
-    setGameProcess(true);
+    setIsGameProcess(true);
+    deleteWinner();
     setGame({ gameMode, userName });
   };
 
@@ -40,16 +45,16 @@ const GameDisplaySection = (props) => {
           <CustomSelectInput
             options={gameSelectOptions}
             setGameOptions={setGameOptions}
-            disabled={gameProcess ? true : null}
+            disabled={isGameProcess ? true : null}
           />
           <CustomTextInput
             setPlayerName={setPlayerName}
-            disabled={gameProcess ? true : null}
+            disabled={isGameProcess ? true : null}
           />
-          <button type="button" onClick={() => { startGame(); }} disabled={gameMode && userName && !gameProcess ? null : true}>Play</button>
+          <button type="button" onClick={() => { startGame(); }} disabled={gameMode && userName && !isGameProcess ? null : true}>Play</button>
         </div>
-        { winner && <h1>{winner}</h1>}
-        { selectedGame && Object.keys(selectedGame).length && <GameFieldSection />}
+        { winner && <h1>{`${winner} WIN!`}</h1>}
+        { selectedGame && Object.keys(selectedGame).length && <GameFieldSection isGameProcess={isGameProcess} />}
       </div>
     </div>
   );
@@ -58,6 +63,7 @@ const GameDisplaySection = (props) => {
 const mapDispatchToProps = (dispatch) => ({
   getOptions: () => dispatch(getGameOptions()),
   setGame: (value) => dispatch(setGameValue(value)),
+  deleteWinner: () => clearWinner(),
 });
 
 const mapStateToProps = (state) => {
@@ -73,6 +79,7 @@ GameDisplaySection.propTypes = {
   getOptions: PropTypes.func,
   gameSelectOptions: PropTypes.arrayOf(PropTypes.shape({})),
   setGame: PropTypes.func,
+  deleteWinner: PropTypes.func,
   winner: PropTypes.string,
   selectedGame: PropTypes.shape({
     field: PropTypes.number, delay: PropTypes.number,

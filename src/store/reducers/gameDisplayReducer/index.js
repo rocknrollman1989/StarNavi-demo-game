@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case GAME_DISPLAY_CONSTANTS.SET_GAME_OPTIONS:
       return {
@@ -38,6 +37,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         winner: action.data,
+      };
+    case GAME_DISPLAY_CONSTANTS.CLEAR_WINNER_NAME:
+      return {
+        ...state,
+        winner: '',
       };
     default: return state;
   }
