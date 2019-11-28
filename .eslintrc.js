@@ -30,6 +30,6 @@ module.exports = {
         "func-names": 0,
         "react/require-default-props": 0,
         "react/state-in-constructor": 0,
-        "max-len": 0
+        "max-len": 0,
     }
 };
