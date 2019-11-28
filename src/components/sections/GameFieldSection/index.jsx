@@ -76,7 +76,7 @@ class GameFieldSection extends React.Component {
   checkGameProgress = () => {
     const { usedCells, totalCellNumber } = this.state;
     const { setNewActiveCell } = this.props;
-    if (usedCells.length >= totalCellNumber || usedCells.length > 3) {
+    if (usedCells.length >= totalCellNumber) {
       this.stopIntnerval();
       this.setWinner();
       return;
