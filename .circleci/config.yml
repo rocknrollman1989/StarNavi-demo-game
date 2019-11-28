@@ -7,7 +7,7 @@ jobs:
   build:
     executor:
       name: win/vs2019
-      shell: bash.exe
+      shell: powershell.exe
     steps:
       - checkout
       - run: ls -lah
