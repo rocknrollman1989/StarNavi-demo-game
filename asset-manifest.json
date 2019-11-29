@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/StarNavi-demo-game/static/css/main.51e8283a.chunk.css",
+    "main.js": "/StarNavi-demo-game/static/js/main.61fce090.chunk.js",
+    "main.js.map": "/StarNavi-demo-game/static/js/main.61fce090.chunk.js.map",
+    "runtime~main.js": "/StarNavi-demo-game/static/js/runtime~main.66b2d419.js",
+    "runtime~main.js.map": "/StarNavi-demo-game/static/js/runtime~main.66b2d419.js.map",
+    "static/js/2.7a78eb58.chunk.js": "/StarNavi-demo-game/static/js/2.7a78eb58.chunk.js",
+    "static/js/2.7a78eb58.chunk.js.map": "/StarNavi-demo-game/static/js/2.7a78eb58.chunk.js.map",
+    "index.html": "/StarNavi-demo-game/index.html",
+    "precache-manifest.5b743fa6368622cdb5fad1052811533f.js": "/StarNavi-demo-game/precache-manifest.5b743fa6368622cdb5fad1052811533f.js",
+    "service-worker.js": "/StarNavi-demo-game/service-worker.js",
+    "static/css/main.51e8283a.chunk.css.map": "/StarNavi-demo-game/static/css/main.51e8283a.chunk.css.map"
+  }
+}
