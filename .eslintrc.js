@@ -31,5 +31,6 @@ module.exports = {
         "react/require-default-props": 0,
         "react/state-in-constructor": 0,
         "max-len": 0,
+        "linebreak-style": 0
     }
 };
